@@ -31,6 +31,7 @@ const produceMessages = async (messages) => {
                     offset: index,
                 }],
             });
+            console.log(`Produced message ${index}`);
         }
     } catch (error) {
         logger.error(`Error producing messages: ${error}`);

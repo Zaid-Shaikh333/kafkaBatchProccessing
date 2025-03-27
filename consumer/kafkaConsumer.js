@@ -1,10 +1,10 @@
 import { Kafka } from 'kafkajs';
-import { kafkaConfig } from '../config/kafkaConfig';
-import  { logger } from '../utils/logger';
+import { kafkaConfig } from '../config/kafkaConfig.js';
+import  { logger } from '../utils/logger.js';
 
 const kafkaConsumer = new Kafka({
     clientId: kafkaConfig.clientId,
-    brokers: [kafkaConfig.brokers],
+    brokers: kafkaConfig.brokers,
 })
 
 const consumer = kafkaConsumer.consumer({
@@ -22,6 +22,7 @@ const connectConsumer = async () => {
 
 const consumeMessages = async () => {
     try {
+        await connectConsumer();
         await consumer.subscribe({
             topic: kafkaConfig.topic,
             fromBeginning: true
