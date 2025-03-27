@@ -1,6 +1,6 @@
 import { Kafka } from 'kafkajs';
 import { kafkaConfig } from '../config/kafkaConfig.js';
-import logger from '../config/logger.js';
+import { logger } from '../utils/logger.js';
 
 const kafkaProducerClient = new Kafka({
     clientId: kafkaConfig.clientId,
